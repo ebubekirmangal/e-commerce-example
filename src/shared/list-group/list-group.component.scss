@@ -1,0 +1,12 @@
+li{
+    cursor: pointer;
+}
+@media(max-width:520px){
+    li{
+        width: 100%;
+    }
+    .main{
+        width: 70vw;
+        display: block;
+    }
+}

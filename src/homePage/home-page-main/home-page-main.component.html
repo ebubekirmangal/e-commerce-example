@@ -1,0 +1,19 @@
+<app-basic-layout>
+<div class="main mt-4 row"> 
+ <div class="categories-show col-4 col-lg-3 col-xl-2">
+  <h3>Categories</h3>
+  <app-category-list 
+  [selectedCategoryId] ="selectedCategory?.id ?? null"
+  (changeSelect)="onChangeSelectCategory($event)"></app-category-list>
+ </div>
+
+<div class="products-show col">
+  <h3>Products</h3>
+  <app-product-card [filterByCategoryId]="selectedCategory?.id"
+  (viewProduct)="onViewProduct($event)"></app-product-card>
+</div>
+</div> 
+</app-basic-layout>
+  
+
+  

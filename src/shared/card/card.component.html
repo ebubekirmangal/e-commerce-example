@@ -1,0 +1,10 @@
+<div class="card" style="width: 18rem;">
+  <img src="assets/img/images.png" class="card-img-top d-flex justify-content-center align-items-center"
+    [style.width]="width" alt="{{title}}">
+  <div class="card-body">
+    <h5 class="card-title">{{title}}</h5>
+    <p class="card-text">{{description}}</p>
+    <button class="btn btn-primary" (click)="OnButtonClick()">more information</button>
+    <span class="text-white unit-price">{{unitPrice | currency}}</span>
+  </div>
+</div>
