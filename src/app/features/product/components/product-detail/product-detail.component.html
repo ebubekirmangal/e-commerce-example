@@ -1,0 +1,28 @@
+@if (!productDetail) {
+    <div class="alert alert-danger text-center"style="width: 80vw; margin: 0 auto;">Product not found!</div>
+}@else {
+    <div class="promotion row" style=" width: 50%; margin: 50px auto 0 auto;">
+
+        <div class="left col-6">
+            <div class="img">
+                <img src={{productDetail.imgPath}} [alt]="productDetail.title" class="img-fluid">
+            </div>
+            <div class="price text-center">
+                {{productDetail.unitPrice | currency}}
+            </div>
+        </div>
+    
+        <div class="right col-6 ">
+            <div class="productHead mb-3">
+                <h3>{{productDetail.title}}</h3>
+            </div>
+            <div class="description mb-5">
+                <p>{{productDetail.description}}</p>
+            </div>
+            <div class="add">
+                <button class="btn btn-primary">Add to Cart</button>
+            </div>
+        </div>
+    
+    </div>
+}

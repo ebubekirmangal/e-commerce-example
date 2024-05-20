@@ -1,0 +1,33 @@
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ProductService } from '../../services/product.service';
+import { ProductItem } from '../../models/productList';
+
+@Component({
+  selector: 'app-product-detail',
+  standalone: true,
+  imports: [
+    CommonModule,
+  ],
+  templateUrl: './product-detail.component.html',
+  styleUrl: './product-detail.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ProductDetailComponent implements OnInit{
+  @Input() productId!: number;
+  productDetail!: ProductItem;
+  constructor(private productService: ProductService ){
+
+  }
+
+  ngOnInit(): void {
+    this.getProductDetail();
+   
+  }
+  getProductDetail() {
+    const productDetail = this.productService.getById(this.productId);
+    if(productDetail){
+     this.productDetail = productDetail; 
+    }
+  }
+}
