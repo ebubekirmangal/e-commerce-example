@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { ProductItem } from '../../models/productList';
+import { ProductDetails } from '../../models/productDetails';
 
 @Component({
   selector: 'app-product-detail',
@@ -15,7 +16,7 @@ import { ProductItem } from '../../models/productList';
 })
 export class ProductDetailComponent implements OnInit{
   @Input() productId!: number;
-  productDetail!: ProductItem;
+  productDetail!: ProductDetails;
   constructor(private productService: ProductService ){
 
   }

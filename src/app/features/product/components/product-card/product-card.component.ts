@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
 import { ProductItem } from '../../models/productList';
 import { CardComponent } from "../../../../shared/card/card.component";
 import { ProductService } from '../../services/product.service';
+import { error } from 'console';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class ProductCardComponent implements OnInit {
   @Input() filterByCategoryId: number | null | undefined;
   @Output() viewProduct = new EventEmitter<ProductItem>();
 
-  productItems!: ProductItem[]
+  productItems!: ProductItem[];
   OnViewInformation(item:ProductItem) {
     this.viewProduct.emit(item);
   }
@@ -33,7 +34,13 @@ constructor(private productService:ProductService){
     this.getProductList();
   }
   getProductList() {
-  this.productItems = this.productService.getList();
+  this.productService.getList().subscribe({
+    next:(productItems) => {
+      this.productItems = productItems;
+    },
+    error:(error) =>{console.error("there was an error"), error},
+    
+  });
   }
 
   get filterProductList(): ProductItem[] | null {
