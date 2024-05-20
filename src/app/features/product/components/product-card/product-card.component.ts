@@ -10,7 +10,7 @@ import { ProductService } from '../../services/product.service';
   standalone: true,
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.Default,
   imports: [
     CommonModule,
     CardComponent
@@ -33,7 +33,10 @@ constructor(private productService:ProductService){
     this.getProductList();
   }
   getProductList() {
-  this.productItems = this.productService.getList();
+  this.productService.productItem$.subscribe((data)=>{
+    this.productItems = data;
+  });
+  this.productService.getList().subscribe();
   }
 
   get filterProductList(): ProductItem[] | null {

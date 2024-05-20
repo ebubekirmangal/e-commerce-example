@@ -1,7 +1,7 @@
 <div class="d-flex flex-wrap gap-4 layout">
     @for (item of filterProductList; track $index) {
-    <app-card [title]="item.title" 
-    [description]="item.description" 
+    <app-card [title]="item.name" 
+    [description]="item.quantityPerUnit" 
     [unitPrice]="item.unitPrice"
     (buttonClick)="OnViewInformation(item)">
     </app-card>

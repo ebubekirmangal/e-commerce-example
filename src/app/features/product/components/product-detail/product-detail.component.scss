@@ -12,5 +12,14 @@ border-radius: 10px;
 }
 
 .price{
-    width: 50%;
+    width: 200px;
+    margin: 20px auto;
+}
+
+img{
+    width: 50vw;
+    min-width: 200px;
+}
+.left,.right{
+    min-width: 200px;
 }

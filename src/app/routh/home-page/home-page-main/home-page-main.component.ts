@@ -7,6 +7,7 @@ import { ProductCardComponent } from "../../../features/product/components/produ
 import { CategoryListItem } from '../../../features/category/models/categoryList';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductItem } from '../../../features/product/models/productList';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @Component({
@@ -16,10 +17,10 @@ import { ProductItem } from '../../../features/product/models/productList';
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
-        AppComponent,
         BasicLayoutComponent,
         CategoryListComponent,
-        ProductCardComponent
+        ProductCardComponent,
+
     ]
 })
 export class HomePageMainComponent  implements OnInit{
@@ -40,7 +41,8 @@ changeOrLeaveIdWithPage() {
         if(categoryId){
             this.selectedCategory ={
                 id: categoryId,
-                name:""
+                name:"",
+                description:""
             }
         }else return;
     }).unsubscribe();

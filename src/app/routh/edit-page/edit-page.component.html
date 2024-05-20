@@ -1,0 +1,77 @@
+<app-basic-layout>
+    @if(message === "Category added successfully!"){
+        <div class="alert alert-success mt-3 mb-3">{{message}}</div>
+    }@else if (message === "Error adding category") {
+        <div class="alert alert-danger mt-3 mb-3">{{message}}</div>
+    }@else {
+        <div></div>
+    }
+    <!-- TODO: Ayarlama yapılacak -->
+    
+
+
+    <div class="main d-flex justify-content-center align-items-center flex-column">
+        <h3 class="text-center mt-3 mb-3 ">Add Category To List</h3>
+        <form [formGroup] ="formgroup" (submit)="onFormSubmit()">
+            <label for="name">Name:</label> <br>
+            <input name="title" type="text" id="name" formControlName="name"> <br>
+    
+            <label for="description">Description</label><br>
+            <textarea name="description" id="description" class="description" formControlName="description"></textarea> <br>
+            <div class="submit">
+                <input type="submit" id="submit" value="Add" class="btn btn-primary">
+            </div>
+        </form>
+    
+    </div>
+    <div class="main d-flex justify-content-center align-items-center flex-column">
+        <h3 class="text-center mt-3 mb-3 ">Delete Category To List</h3>
+        <form [formGroup] ="formgroup2" >
+            <label for="id">Id:</label> <br>
+            <input name="title" type="numer" id="id" formControlName="id" formControlName="id" > <br>
+            <div class="submit">
+                <input type="submit" id="submit" value="Delete" class="btn btn-primary mt-1 " (click)="delete()">
+            </div>
+        </form>
+    
+    </div>
+    <div class="main d-flex justify-content-center align-items-center flex-column">
+        <h3 class="text-center mt-3 mb-3 ">Update Category And To List</h3>
+        <form [formGroup] ="formgroup" (submit)="onFormSubmit()">
+            <label for="name">Name:</label> <br>
+            <input name="title" type="text" id="name" formControlName="name"> <br>
+    
+            <label for="description">Description</label><br>
+            <textarea name="description" id="description" class="description" formControlName="description"></textarea> <br>
+            <div class="submit">
+                <input type="submit" id="submit" value="Update" class="btn btn-primary">
+            </div>
+        </form>
+    
+    </div>
+ 
+    
+    <hr>
+
+    <h2 class="text-center mt-3 mb-5 ">Category List View</h2>
+    <div class="d-flex justify-content-center">
+        <table border="3">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th class="mini-layout"><div class="text">Description</div> <div class="inline" title="add new category" (click)="addNewCategory()"><div class="add-new-category">+</div></div></th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                @for (item of allList; track $index) {
+                <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.description}}</td>
+            </tr>}
+            </tbody>
+        </table>
+    </div>
+</app-basic-layout>

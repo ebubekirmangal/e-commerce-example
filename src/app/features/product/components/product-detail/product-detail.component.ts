@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { ProductItem } from '../../models/productList';
+import { ProductDetails } from '../../models/productDetails';
 
 @Component({
   selector: 'app-product-detail',
@@ -13,21 +14,20 @@ import { ProductItem } from '../../models/productList';
   styleUrl: './product-detail.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductDetailComponent implements OnInit{
+export class ProductDetailComponent {
   @Input() productId!: number;
-  productDetail!: ProductItem;
+  productDetail!: ProductDetails;
   constructor(private productService: ProductService ){
 
   }
 
-  ngOnInit(): void {
-    this.getProductDetail();
+  // ngOnInit(): void {
+  //   this.getProductDetail();
    
-  }
-  getProductDetail() {
-    const productDetail = this.productService.getById(this.productId);
-    if(productDetail){
-     this.productDetail = productDetail; 
-    }
-  }
+  // }
+  // getProductDetail() {
+  //   const productDetail:ProductDetails = this.productService.getById(this.productId).subscribe(()=>
+  //     this.productDetail = productDetail );
+   
+  // }
 }
